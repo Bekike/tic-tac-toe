@@ -5,8 +5,23 @@ def init_board():
 
 
 def get_move(board, player):
+    def get_move(board):
     """Returns the coordinates of a valid move for player on board."""
+    allowed = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']
+    coordinate = input("Give a coordinate: ")
+    if coordinate.casefold() == 'quit':
+        quit()
     row, col = 0, 0
+    while coordinate.upper() not in allowed:
+        coordinate = input("Give a coordinate (like A1, B2 etc.): ")
+    # check if the valid position is empty
+    if coordinate.upper().startswith('A'):
+        pass
+    if coordinate.upper().startswith('B'):
+        row += 1
+    if coordinate.upper().startswith('C'):
+        row += 2
+    col += int(coordinate[-1]) - 1
     return row, col
 
 
